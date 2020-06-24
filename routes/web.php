@@ -99,10 +99,18 @@ Auth::routes();
 Route::group(['prefix' => 'api/'], function () {
 
     Route::post('login', 'AuthController@login');
+    Route::post('refresh', 'AuthController@refresh');
 
     Route::group(['middleware' => ['jwt.verify']], function() {
 
         Route::get('categories', 'ApiController@getAllCategories');
+        Route::get('category/{categoryId}/movies', 'ApiController@getAllMovies');
+        Route::get('movie/{movieId}', 'ApiController@getMovie');
+        Route::get('movie/{movieId}/reviews', 'ApiController@getReviews');
+        Route::get('movie/{movieId}/actors', 'ApiController@getActors');
+        Route::get('user-info', 'ApiController@userInfo');
+        Route::post('logout', 'AuthController@logout');
+        Route::get('blogs', 'ApiController@getBlogs');
 
     });
     

@@ -44,5 +44,9 @@ class Movie extends Model
     public function reviews(){
         return $this->hasMany('App\MovieRating');
     }
+
+    public function actors(){
+        return $this->hasMany('App\Actors');
+    }
     
 }
